@@ -1,53 +1,68 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
-import { Platform } from 'react-native';
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
-export const Colors = {
+export const colorPrimitives = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    colorPrimary: '#0ea7e9',
+    colorTextPrimary: '#075a85',
+    colorSurface: '#fafafa',
+    colorBackground: '#f9f9f9',
+    colorBorder: '#e0e0e0',
+    colorOnPrimary: "#fbfbfb",
+    tabBarInactiveColor:"#666666",
+    tabBarActiveColor:"#0ea7e9"
   },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
-};
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+  primary: {
+    50: '#f0f9ff',
+    100: '#e0f2fe',
+    200: '#bae7fd',
+    300: '#7dd4fc',
+    400: '#38bff8',
+    600: '#0286c7',
+    700: '#036aa1',
+    800: '#075a85',
+    900: '#0c4b6e',
   },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
+
+  success: {
+    50: '#f1fcf1',
+    100: '#e0f9df',
+    200: '#c2f1c1',
+    300: '#92e491',
+    400: '#5acf59',
+    500: '#34b433',
   },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+
+  danger: {
+    50: '#fff0f0',
+    100: '#ffdddd',
+    200: '#ffc0c0',
+    300: '#ff9494',
+    400: '#ff5757',
+    500: '#ff2323',
   },
-});
+
+  warning: {
+    50: '#ffffea',
+    100: '#fffbc5',
+    200: '#fff885',
+    300: '#ffee46',
+    400: '#ffdf1b',
+    500: '#ffc107',
+  },
+
+  info: {
+    50: '#eefcfd',
+    100: '#d3f7fa',
+    200: '#adeef4',
+    300: '#74dfec',
+    400: '#34c8dc',
+    500: '#17a2b8',
+  },
+
+  dark: {
+    colorPrimary: '#0ea7e9',
+    colorTextPrimary: '#f5f5f5',
+    colorSurface: '#3d3d3d',
+    colorBackground: '#1e1e1e',
+    colorBorder: '#2c2c2c',
+  },
+} 
