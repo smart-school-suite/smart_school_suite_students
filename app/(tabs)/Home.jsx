@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import {
   Image,
   Pressable,
@@ -27,6 +28,7 @@ import { colorPrimitives } from "../../constants/theme";
 import { lightModeStyles } from "../../styles/theme/light";
 import { utilityStyles } from "../../styles/utility";
 function HomeScreen() {
+  const router = useRouter();
   const authUser = useSelector((state) => state.auth.user);
   const userImage = require("../../assets/images/user.jpg");
   const eventImage = require("../../assets/images/event-img.jpg");
@@ -108,6 +110,7 @@ function HomeScreen() {
                     utilityStyles.alignCenter,
                     { width: 40, height: 40 },
                   ]}
+                 
                 >
                   <View
                     style={[
@@ -136,6 +139,9 @@ function HomeScreen() {
                     utilityStyles.alignCenter,
                     { width: 40, height: 40 },
                   ]}
+                   onPress={() => {
+                     router.push('/setting');
+                  }}
                 >
                   <SettingLine
                     width={24}
