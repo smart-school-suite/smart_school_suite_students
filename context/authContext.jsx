@@ -74,9 +74,9 @@ export const AuthProvider = ({ children }) => {
         }
       );
       const responseData = response.data.data;
-      await getAuthenticatedUser(responseData.authToken, router);
-      secureStorage.setItem(storageKeys['AUTH_TOKEN'],  responseData.authToken)
-      secureStorage.setItem(storageKeys['API_KEY'], responseData.authToken)
+      await getAuthenticatedUser(responseData.authToken, responseData.apiKey, router, );
+      await secureStorage.setItem(storageKeys['AUTH_TOKEN'],  responseData.authToken)
+      await secureStorage.setItem(storageKeys['API_KEY'], responseData.apiKey)
 
       router.navigate("Home");
     } catch (error) {
@@ -90,17 +90,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getAuthenticatedUser = useCallback(
-    async (token, router) => {
+    async (token, apiKey, router) => {
       try {
         const response = await axios.get("auth/student/me", {
           headers: {
             Authorization: `Bearer ${token}`,
+            "API-KEY":apiKey
           },
         });
         dispatch(handleSetAuthUser({ user: response.data.data }));
       } catch (error) {
         router.navigate("Login")
-        console.log(error)
       }
     },
     []
@@ -115,7 +115,7 @@ export const AuthProvider = ({ children }) => {
       });
       const responseData = response.data.data;
       secureStorage.setItem(storageKeys['PASSWORD_OTP_TOKEN_HEADER'], responseData.otp_header)
-      router("ResetPasswordOtp");
+      router.navigate("ResetPasswordOtp");
     } catch (e) {
       setAuthError((prevalue) => ({
         ...prevalue,
@@ -140,12 +140,12 @@ export const AuthProvider = ({ children }) => {
           otp,
         },
         {
-          headers: { OTP_TOKEN_HEADER: resetPasswordOtpToken },
+          headers: { "OTP-TOKEN-HEADER": resetPasswordOtpToken },
         }
       );
       const responseData = response.data.data;
       secureStorage.setItem(storageKeys['PASSWORD_RESET_TOKEN'], responseData.password_reset_token)
-      router("ChangePassword");
+      router.navigate("ChangePassword");
     } catch (e) {
       setAuthError((prevalue) => ({
         ...prevalue,
@@ -161,22 +161,23 @@ export const AuthProvider = ({ children }) => {
     setLoading((prevalue) => ({ ...prevalue, changePassword:true }));
     setAuthError((prevalue) => ({ ...prevalue, changePassword:null }))
     try {
-      await axios.post("auth/student/password/change",
+      await axios.post("auth/student/password/reset/update",
         {
           new_password:passwordCredentails.new_password,
           new_password_confirmation:passwordCredentails.new_password_confirmation
         },
         {
           headers:{
-            "password-reset-token":passwordResetToken
+            "PASSWORD-RESET-TOKEN":passwordResetToken
           }
         }
       )
-      secureStorage.removeItem(storageKeys['PASSWORD_RESET_TOKEN']);
-      secureStorage.removeItem(storageKeys['PASSWORD_OTP_TOKEN_HEADER']);
-      router("PasswordResetSuccessfull");
+     await secureStorage.removeItem(storageKeys['PASSWORD_RESET_TOKEN']);
+      await secureStorage.removeItem(storageKeys['PASSWORD_OTP_TOKEN_HEADER']);
+      router.navigate("PasswordResetSuccessfull");
     } catch (e) {
         setAuthError((prevalue) => ({ ...prevalue,  changePassword:"Something went wrong try again"}));
+        console.log(e);
     }
     finally{
        setLoading((prevalue) => ({ ...prevalue, changePassword:false }))

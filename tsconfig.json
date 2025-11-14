@@ -15,5 +15,5 @@
     "expo-env.d.ts", 
     "components/ui/button/button.jsx", 
     "components/ui/button/buttonStyles.js"
-  ]
+, "features/slices/authSlice.js", "app/_layout.jsx"  ]
 }

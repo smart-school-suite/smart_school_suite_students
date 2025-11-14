@@ -10,12 +10,20 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Chevron } from "../../assets/icons/Chevron";
 import StepInput from "../../components/ui/input/stepInput";
 import { colorPrimitives } from "../../constants/theme";
+import { useAuth } from "../../context/authContext";
 import { lightModeStyles } from "../../styles/theme/light";
 import { utilityStyles } from "../../styles/utility";
+import { secureStorage } from "../../utils/securesStore";
 function ResetPasswordOtpScreen() {
+  const router = useRouter();
   const [code, setCode] = useState("");
   const stepInputRef = useRef(null);
-  const router = useRouter();
+  const { handleValidatePasswordResetOtp, loading } = useAuth();
+  
+  const handleSubmit = async () => {
+       const resetPasswordOtpToken = await secureStorage.getItem("PASSWORD-OTP-TOKEN-HEADER");
+       await handleValidatePasswordResetOtp(router, code, resetPasswordOtpToken);
+  }
   return (
     <>
       <SafeAreaView
@@ -41,7 +49,7 @@ function ResetPasswordOtpScreen() {
                 utilityStyles.justifyBetween,
               ]}
             >
-              <Pressable onPress={() => router.navigate("/Login")}>
+              <Pressable onPress={() => router.navigate("PasswordReset")}>
                 <Chevron
                   width={24}
                   height={24}
@@ -160,7 +168,7 @@ function ResetPasswordOtpScreen() {
                   padding: 20,
                 },
               ]}
-              onPress={() => router.navigate("/ChangePassword")}
+              onPress={() => handleSubmit()}
             >
               <View
                 style={[

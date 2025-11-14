@@ -1,18 +1,26 @@
-import { useRouter } from 'expo-router';
+import { useRouter } from "expo-router";
+import { useRef, useState } from "react";
 import {
-   Pressable,
-   Text,
-   TextInput,
-   TouchableOpacity,
-   View,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Chevron } from "../../assets/icons/Chevron";
+import Input from "../../components/ui/input/input";
 import { colorPrimitives } from "../../constants/theme";
+import { useAuth } from "../../context/authContext";
 import { lightModeStyles } from "../../styles/theme/light";
 import { utilityStyles } from "../../styles/utility";
 function PasswordResetScreen() {
-     const router = useRouter();
+  const [email, setEmail] = useState("");
+  const router = useRouter();
+  const emailRef = useRef();
+  const { handlePasswordReset, loading } = useAuth();
+  const handleSubmit = async() => {
+        await handlePasswordReset(router, email);
+  }
   return (
     <>
       <SafeAreaView
@@ -64,28 +72,11 @@ function PasswordResetScreen() {
               >
                 Email
               </Text>
-              <TextInput
-                placeholder="example@gmail.com"
-                placeholderTextColor="#999"
-                keyboardType="email-address"
-                textContentType="emailAddress"
-                autoComplete="email"
-                autoCapitalize="none"
-                autoCorrect={false}
-                returnKeyType="next"
-                style={[
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.textSm,
-                  lightModeStyles.bgLight,
-                  utilityStyles.roundedLg,
-                  {
-                    height: 56,
-                    borderWidth: 0.5,
-                    borderColor: "#ccc",
-                    color: "#555",
-                  },
-                ]}
+              <Input
+                ref={emailRef}
+                type="email"
+                value={email}
+                onChangeText={setEmail}
               />
             </View>
             <TouchableOpacity
@@ -98,7 +89,7 @@ function PasswordResetScreen() {
                   padding: 20,
                 },
               ]}
-              onPress={() => router.navigate("/ResetPasswordOtp")}
+              onPress={() => handleSubmit()}
             >
               <View
                 style={[

@@ -10,11 +10,18 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Chevron } from "../../assets/icons/Chevron";
 import StepInput from "../../components/ui/input/stepInput";
 import { colorPrimitives } from "../../constants/theme";
+import { useAuth } from "../../context/authContext";
 import { lightModeStyles } from "../../styles/theme/light";
 import { utilityStyles } from "../../styles/utility";
+import { secureStorage } from "../../utils/securesStore";
 function LoginOtpScreen() {
   const router = useRouter();
+  const { handleTwoStepVerification, isLoading } = useAuth();
   const [code, setCode] = useState("");
+  const handleSubmit = async () => {
+    const otpTokenHeader = await secureStorage.getItem("LOGIN-OTP-TOKEN-HEADER");
+    await handleTwoStepVerification(code, router, otpTokenHeader)
+  }
   const stepInputRef = useRef(null);
   return (
     <>
@@ -160,7 +167,7 @@ function LoginOtpScreen() {
                   padding: 20,
                 },
               ]}
-              onPress={() => router.navigate("/Home")}
+              onPress={() => handleSubmit()}
             >
               <View
                 style={[

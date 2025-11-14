@@ -2,12 +2,13 @@ import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CalendarLine } from "../../assets/icons/CalendarLine";
 import { ClockLine } from "../../assets/icons/ClockLine";
-import { Dash } from "../../assets/icons/Dash";
-import { Option } from "../../assets/icons/Option";
+import { DashLine } from "../../assets/icons/DashLine";
+import { Dot } from "../../assets/icons/Dot";
+import { Hash } from "../../assets/icons/Hash";
+import { Star } from "../../assets/icons/Star";
 import { colorPrimitives } from "../../constants/theme";
 import { lightModeStyles } from "../../styles/theme/light";
 import { utilityStyles } from "../../styles/utility";
-
 function ScheduleScreen() {
   const userImage = require("../../assets/images/user.jpg");
   return (
@@ -610,981 +611,214 @@ function ScheduleScreen() {
             >
               First Semester Timetable
             </Text>
-            <View style={[utilityStyles.flexCol, utilityStyles.gSm]}>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
+            {
+              [...Array(6)].map((items, index) => (
+                 <View style={[utilityStyles.flexCol, utilityStyles.gSm]} key={index}>
+              <View style={[utilityStyles.flexRow, utilityStyles.alignCenter, utilityStyles.w100]}>
                 <View
                   style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
+                    utilityStyles.flexCol,
                     utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
+                    utilityStyles.justifyCenter,
                     utilityStyles.gXs,
+                    utilityStyles.w10
                   ]}
                 >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
                   <Text
                     style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
                       utilityStyles.fontMedium,
+                      utilityStyles.textXs,
+                      lightModeStyles.textLight,
                     ]}
                   >
-                    Dr. Alex Johnson
+                    10:00
                   </Text>
-                </View>
-                <View>
+                  <DashLine color={colorPrimitives.light.colorTextPrimary}/>
                   <Text
                     style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
                       utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
+                      utilityStyles.textXs,
+                      lightModeStyles.textLight,
                     ]}
                   >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
+                    11:30
                   </Text>
                 </View>
                 <View
                   style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.g2Xs,
-                    utilityStyles.alignCenter,
+                    utilityStyles.roundedXl,
+                    utilityStyles.pMd,
+                    utilityStyles.flexCol,
+                    utilityStyles.gLg,
+                    lightModeStyles.borderColor,
+                    utilityStyles.w90,
+                    { backgroundColor: "#fff", borderWidth: 0.5 },
                   ]}
                 >
-                  <View>
-                    <ClockLine
-                      width={16}
-                      height={16}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
+                  <View style={[utilityStyles.flexCol, utilityStyles.gSm]}>
+                    <View
+                      style={[
+                        utilityStyles.bgPrimary100,
+                        utilityStyles.roundedCircle,
+                        utilityStyles.justifyCenter,
+                        utilityStyles.alignCenter,
+                        utilityStyles.flexCol,
+                        { minWidth: 75, width: 50, height: 20 },
+                      ]}
+                    >
+                      <Text
+                        style={[
+                          utilityStyles.textXs,
+                          utilityStyles.fontMedium,
+                          utilityStyles.colorPrimary400,
+                        ]}
+                      >
+                        Theoritical
+                      </Text>
+                    </View>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.justifyBetween,
+                      ]}
+                    >
+                      <View>
+                        <Text
+                          style={[
+                            utilityStyles.fontSemiBold,
+                            utilityStyles.textMd,
+                            lightModeStyles.textLight,
+                          ]}
+                        >
+                          Calculus I
+                        </Text>
+                      </View>
+                      <View
+                        style={[
+                          utilityStyles.flexRow,
+                          utilityStyles.alignCenter,
+                          utilityStyles.bgSuccess100,
+                          utilityStyles.roundedSm,
+                          { padding: 4 },
+                        ]}
+                      >
+                        <View>
+                          <Dot color={colorPrimitives.success[400]} />
+                        </View>
+                        <Text
+                          style={[
+                            utilityStyles.fontMedium,
+                            utilityStyles.textXs,
+                            utilityStyles.colorSuccess400,
+                          ]}
+                        >
+                          InProgress
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                    style={[utilityStyles.flexRow, utilityStyles.alignCenter]}
+                  >
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.g2Xs,
+                      ]}
+                    >
+                      <View>
+                        <Star height={20} width={20}/>
+                      </View>
+                      <Text
+                        style={[
+                          utilityStyles.fontMedium,
+                          utilityStyles.textXs,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        3 Credit
+                      </Text>
+                    </View>
+                    <View>
+                      <Dot />
+                    </View>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.g2Xs,
+                      ]}
+                    >
+                      <View>
+                        <Hash height={20} width={20}/>
+                      </View>
+                      <Text
+                        style={[
+                          utilityStyles.fontMedium,
+                          utilityStyles.textXs,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                       SWE001
+                      </Text>
+                    </View>
+                   </View>
                   </View>
-                  <Text
+                  <View
                     style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
+                      utilityStyles.flexRow,
+                      utilityStyles.alignCenter,
+                      utilityStyles.justifyBetween,
                     ]}
                   >
-                    9:30 AM
-                  </Text>
-                  <View>
-                    <Dash
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.gXs,
+                      ]}
+                    >
+                      <Image
+                        source={userImage}
+                        style={{ width: 35, height: 35, borderRadius: 5 }}
+                      />
+                      <Text
+                        style={[
+                          lightModeStyles.textLight,
+                          utilityStyles.textSm,
+                          utilityStyles.fontMedium,
+                        ]}
+                      >
+                        Dr. Alex Johnson
+                      </Text>
+                    </View>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.g2Xs,
+                      ]}
+                    >
+                      <View>
+                        <ClockLine height={20} width={20}/>
+                      </View>
+                      <Text
+                        style={[
+                          utilityStyles.fontMedium,
+                          utilityStyles.textXs,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        2h 30Min
+                      </Text>
+                    </View>
                   </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    11:00 AM,
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    2h 30Min
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.g2Xs,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <View>
-                    <ClockLine
-                      width={16}
-                      height={16}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    9:30 AM
-                  </Text>
-                  <View>
-                    <Dash
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    11:00 AM,
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    2h 30Min
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.g2Xs,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <View>
-                    <ClockLine
-                      width={16}
-                      height={16}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    9:30 AM
-                  </Text>
-                  <View>
-                    <Dash
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    11:00 AM,
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    2h 30Min
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.g2Xs,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <View>
-                    <ClockLine
-                      width={16}
-                      height={16}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    9:30 AM
-                  </Text>
-                  <View>
-                    <Dash
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    11:00 AM,
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    2h 30Min
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.g2Xs,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <View>
-                    <ClockLine
-                      width={16}
-                      height={16}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    9:30 AM
-                  </Text>
-                  <View>
-                    <Dash
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    11:00 AM,
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    2h 30Min
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.g2Xs,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <View>
-                    <ClockLine
-                      width={16}
-                      height={16}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    9:30 AM
-                  </Text>
-                  <View>
-                    <Dash
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    11:00 AM,
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    2h 30Min
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.g2Xs,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <View>
-                    <ClockLine
-                      width={16}
-                      height={16}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    9:30 AM
-                  </Text>
-                  <View>
-                    <Dash
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    11:00 AM,
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    2h 30Min
-                  </Text>
                 </View>
               </View>
             </View>
+              ))
+            }
           </View>
         </ScrollView>
       </SafeAreaView>

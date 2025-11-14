@@ -1,10 +1,12 @@
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Dot } from "../../assets/icons/Dot";
+import { Hash } from "../../assets/icons/Hash";
 import { Option } from "../../assets/icons/Option";
+import { Star } from "../../assets/icons/Star";
 import { colorPrimitives } from "../../constants/theme";
 import { lightModeStyles } from "../../styles/theme/light";
 import { utilityStyles } from "../../styles/utility";
-
 function CourseScreen() {
   const userImage = require("../../assets/images/user.jpg");
   return (
@@ -171,29 +173,112 @@ function CourseScreen() {
                   { backgroundColor: "#fff", borderWidth: 0.5 },
                 ]}
               >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
+                <View style={[utilityStyles.flexCol, utilityStyles.gSm]}>
+                  <View
                     style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
+                      utilityStyles.bgPrimary100,
+                      utilityStyles.roundedCircle,
+                      utilityStyles.justifyCenter,
+                      utilityStyles.alignCenter,
+                      utilityStyles.flexCol,
+                      { minWidth: 75, width: 50, height: 25 },
                     ]}
                   >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
+                    <Text
+                      style={[
+                        utilityStyles.textXs,
+                        utilityStyles.fontMedium,
+                        utilityStyles.colorPrimary400,
+                      ]}
+                    >
+                      Theoritical
+                    </Text>
+                  </View>
+                  <View
+                    style={[
+                      utilityStyles.flexRow,
+                      utilityStyles.alignCenter,
+                      utilityStyles.w100,
+                      utilityStyles.justifyBetween,
+                    ]}
+                  >
+                    <View>
+                      <Text
+                        style={[
+                          utilityStyles.textMd,
+                          utilityStyles.fontSemiBold,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        Engineering Mathematics
+                      </Text>
+                    </View>
+                    <View>
+                      <Option
+                        width={20}
+                        height={20}
+                        color={colorPrimitives.light.colorTextPrimary}
+                      />
+                    </View>
+                  </View>
+                  <View
+                    style={[
+                      utilityStyles.flexRow,
+                      utilityStyles.alignCenter,
+                      utilityStyles.gXs,
+                    ]}
+                  >
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.g2Xs,
+                      ]}
+                    >
+                      <View>
+                        <Star
+                          height={20}
+                          width={20}
+                          color={colorPrimitives.light.colorTextPrimary}
+                        />
+                      </View>
+                      <Text
+                        style={[
+                          utilityStyles.fontMedium,
+                          utilityStyles.textXs,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        3 Credit
+                      </Text>
+                    </View>
+                    <View>
+                      <Dot color={colorPrimitives.light.colorTextPrimary} />
+                    </View>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.g2Xs,
+                      ]}
+                    >
+                      <View>
+                        <Hash
+                          height={20}
+                          width={20}
+                          color={colorPrimitives.light.colorTextPrimary}
+                        />
+                      </View>
+                      <Text
+                        style={[
+                          utilityStyles.fontMedium,
+                          utilityStyles.textXs,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        SWE001
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View>
@@ -202,516 +287,49 @@ function CourseScreen() {
                       lightModeStyles.textLight,
                       utilityStyles.textSm,
                       utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
+                      {
+                        letterSpacing: 0.2,
+                        lineHeight: 20,
+                      },
                     ]}
                   >
                     Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
+                    variables, control structures, and basic algorithms
                   </Text>
                 </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
+                <View>
+                  <View
                     style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
+                      utilityStyles.flexRow,
+                      utilityStyles.alignCenter,
+                      utilityStyles.gXs,
                     ]}
                   >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
+                    <Image
+                      source={userImage}
+                      style={{ width: 35, height: 35, borderRadius: 5 }}
                     />
+                    <View style={[utilityStyles.flexCol]}>
+                      <Text
+                        style={[
+                          lightModeStyles.textLight,
+                          utilityStyles.textSm,
+                          utilityStyles.fontMedium,
+                        ]}
+                      >
+                        Dr. Alex Johnson
+                      </Text>
+                      <Text
+                        style={[
+                          lightModeStyles.textLight,
+                          utilityStyles.textSm,
+                          utilityStyles.fontMedium,
+                        ]}
+                      >
+                        Bachelor's Degree
+                      </Text>
+                    </View>
                   </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View style={[utilityStyles.flexCol, utilityStyles.gSm]}>
-              <View>
-                <Text
-                  style={[
-                    lightModeStyles.textLight,
-                    utilityStyles.textMd,
-                    utilityStyles.fontSemiBold,
-                  ]}
-                >
-                  First Semester
-                </Text>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
-                  utilityStyles.flexCol,
-                  utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
-                ]}
-              >
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.w100,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textMd,
-                      utilityStyles.fontSemiBold,
-                    ]}
-                  >
-                    Engineering Mathematics
-                  </Text>
-                  <View>
-                    <Option
-                      width={20}
-                      height={20}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    SWE001
-                  </Text>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    3 Credit
-                  </Text>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.gXs,
-                  ]}
-                >
-                  <Image
-                    source={userImage}
-                    style={{ width: 35, height: 35, borderRadius: 5 }}
-                  />
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                    ]}
-                  >
-                    Dr. Alex Johnson
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={[
-                      lightModeStyles.textLight,
-                      utilityStyles.textSm,
-                      utilityStyles.fontMedium,
-                      { letterSpacing: 0.2, lineHeight: 20 },
-                    ]}
-                  >
-                    Fundamentals of programming concepts using Python, including
-                    variables, control structures, and basic algorithms...
-                  </Text>
                 </View>
               </View>
             </View>
