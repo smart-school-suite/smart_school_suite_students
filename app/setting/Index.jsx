@@ -78,13 +78,14 @@ function SettingScreen() {
                   { borderWidth: 0.5 },
                 ]}
               >
-                <View
+                <Pressable
                   style={[
                     utilityStyles.flexRow,
                     utilityStyles.w100,
                     utilityStyles.alignCenter,
                     utilityStyles.gSm,
                   ]}
+                  onPress={() => router.push("setting/finances/TuitionFeeStructure")}
                 >
                   <View style={[utilityStyles.w10]}>
                     
@@ -148,14 +149,15 @@ function SettingScreen() {
                       }}
                     ></View>
                   </View>
-                </View>
-                <View
+                </Pressable>
+                <Pressable
                   style={[
                     utilityStyles.flexRow,
                     utilityStyles.w100,
                     utilityStyles.alignCenter,
                     utilityStyles.gSm,
                   ]}
+                  onPress={() => router.push("setting/finances/AdditionalFee")}
                 >
                   <View style={[utilityStyles.w10]}>
                     <AdditionalFeeFilled
@@ -218,14 +220,15 @@ function SettingScreen() {
                       }}
                     ></View>
                   </View>
-                </View>
-                <View
+                </Pressable>
+                <Pressable
                   style={[
                     utilityStyles.flexRow,
                     utilityStyles.w100,
                     utilityStyles.alignCenter,
                     utilityStyles.gSm,
                   ]}
+                  onPress={() => router.push("setting/finances/RegistrationFee")}
                 >
                   <View style={[utilityStyles.w10]}>
                     <UserPlusFilled
@@ -288,7 +291,7 @@ function SettingScreen() {
                       }}
                     ></View>
                   </View>
-                </View>
+                </Pressable>
                 <Pressable
                   style={[
                     utilityStyles.flexRow,
@@ -296,7 +299,7 @@ function SettingScreen() {
                     utilityStyles.alignCenter,
                     utilityStyles.gSm,
                   ]}
-                  onPress={() => alert("Hello World")}
+                  onPress={() => router.push("setting/finances/Transaction")}
                 >
                   <View style={[utilityStyles.w10]}>
                     <TransactionFilled
@@ -375,13 +378,14 @@ function SettingScreen() {
                   { borderWidth: 0.5 },
                 ]}
               >
-                <View
+                <Pressable
                   style={[
                     utilityStyles.flexRow,
                     utilityStyles.w100,
                     utilityStyles.alignCenter,
                     utilityStyles.gSm,
                   ]}
+                  onPress={() => router.navigate("setting/election/ElectionResult")}
                 >
                   <View style={[utilityStyles.w10]}>
                     <ElectionFilled
@@ -444,14 +448,15 @@ function SettingScreen() {
                       }}
                     ></View>
                   </View>
-                </View>
-                <View
+                </Pressable>
+                <Pressable
                   style={[
                     utilityStyles.flexRow,
                     utilityStyles.w100,
                     utilityStyles.alignCenter,
                     utilityStyles.gSm,
                   ]}
+                  onPress={() => router.push("setting/election/Application")}
                 >
                   <View style={[utilityStyles.w10]}>
                     <FormFilled
@@ -507,7 +512,7 @@ function SettingScreen() {
                       </View>
                     </View>
                   </View>
-                </View>
+                </Pressable>
               </View>
             </View>
             <View style={[utilityStyles.flexCol, utilityStyles.gXs]}>

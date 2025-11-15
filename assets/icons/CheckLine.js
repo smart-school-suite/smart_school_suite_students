@@ -1,5 +1,5 @@
 import Svg, { G, Path } from "react-native-svg";
- export const Checkline = (props) => (
+ export const CheckLine = (props) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={props.width || 24}

@@ -8,12 +8,12 @@ export default function SettingLayout() {
       }}
     >
       <Stack.Screen name="Index" />
-      <Stack.Screen name="election/Application" />
-      <Stack.Screen name="election/ElectionResult" />
-      <Stack.Screen name="finances/AdditionalFee" />
-      <Stack.Screen name="finances/RegistrationFee" />
-      <Stack.Screen name="finances/Transaction" />
-      <Stack.Screen name="finances/TuitionFeeStructure"  />
+      <Stack.Screen name="setting/election/Application" />
+      <Stack.Screen name="setting/election/ElectionResult" />
+      <Stack.Screen name="setting/finances/AdditionalFee" />
+      <Stack.Screen name="setting/finances/RegistrationFee" />
+      <Stack.Screen name="setting/finances/Transaction" />
+      <Stack.Screen name="setting/finances/TuitionFeeStructure"  />
     </Stack>
   );
 }
