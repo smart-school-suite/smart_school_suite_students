@@ -12,6 +12,7 @@ import { LogoutFilled } from "../../assets/icons/LogoutFilled";
 import { PasswordFilled } from "../../assets/icons/PasswordFilled";
 import { StructureFilled } from "../../assets/icons/StructureFilled";
 import { TransactionFilled } from "../../assets/icons/TransactionFilled";
+import { TrashFilled } from "../../assets/icons/TrashFilled";
 import { UserPlusFilled } from "../../assets/icons/UserPlusFilled";
 import { VersionFilled } from "../../assets/icons/Version";
 import { colorPrimitives } from "../../constants/theme";
@@ -883,6 +884,78 @@ function SettingScreen() {
                           width={18}
                           height={18}
                           color={colorPrimitives.light.colorTextPrimary}
+                        />
+                      </View>
+                      
+                    </View>
+                     <View
+                      style={{
+                        width: "95%",
+                        height: 0.5,
+                        backgroundColor: colorPrimitives.light.colorBorder,
+                      }}
+                    ></View>
+                  </View>
+                </View>
+                
+                 <View
+                  style={[
+                    utilityStyles.flexRow,
+                    utilityStyles.w100,
+                    utilityStyles.alignCenter,
+                    utilityStyles.gSm,
+                  ]}
+                >
+                  <View style={[utilityStyles.w10]}>
+                    <TrashFilled
+                      width={24}
+                      height={24}
+                      color={colorPrimitives.danger[400]}
+                    />
+                  </View>
+                  <View
+                    style={[
+                      utilityStyles.flexCol,
+                      utilityStyles.w90,
+                      utilityStyles.gXs,
+                    ]}
+                  >
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.justifyBetween,
+                        lightModeStyles.borderColor,
+                        {
+                          paddingEnd: 10,
+                        },
+                      ]}
+                    >
+                      <View style={[utilityStyles.flexCol]}>
+                        <Text
+                          style={[
+                            utilityStyles.fontSemiBold,
+                            utilityStyles.textSm,
+                            {color:colorPrimitives.danger[400]}
+                          ]}
+                        >
+                          Delete Account
+                        </Text>
+                        <Text
+                          style={[
+                            utilityStyles.fontRegular,
+                            utilityStyles.textSm,
+                            {color:colorPrimitives.danger[400]}
+                          ]}
+                        >
+                          Permanently remove your data
+                        </Text>
+                      </View>
+                      <View>
+                        <Forward
+                          width={18}
+                          height={18}
+                          color={colorPrimitives.danger[400]}
                         />
                       </View>
                     </View>

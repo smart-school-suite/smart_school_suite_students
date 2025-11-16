@@ -1,5 +1,5 @@
 import Svg, { Path } from "react-native-svg";
-export const CalendarLineCancel = (props) => (
+export const CalendarCancelLine = (props) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={props.width || 24}

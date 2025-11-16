@@ -83,7 +83,7 @@ function HomeScreen() {
                       lightModeStyles.textLight,
                     ]}
                   >
-                    Chongong P
+                    {authUser?.name}
                   </Text>
                   <Text
                     style={[
@@ -110,7 +110,6 @@ function HomeScreen() {
                     utilityStyles.alignCenter,
                     { width: 40, height: 40 },
                   ]}
-                 
                 >
                   <View
                     style={[
@@ -139,8 +138,8 @@ function HomeScreen() {
                     utilityStyles.alignCenter,
                     { width: 40, height: 40 },
                   ]}
-                   onPress={() => {
-                     router.push('/setting');
+                  onPress={() => {
+                    router.push("/setting");
                   }}
                 >
                   <SettingLine
@@ -1718,7 +1717,7 @@ function HomeScreen() {
                           utilityStyles.colorPrimary400,
                         ]}
                       >
-                        Info
+                        Info as
                       </Text>
                     </View>
                   </Pressable>
@@ -1775,7 +1774,7 @@ function HomeScreen() {
                       <Text
                         style={[
                           utilityStyles.fontMedium,
-                          utilityStyles.textXs,
+                          utilityStyles.textSm,
                           lightModeStyles.textLight,
                           {
                             letterSpacing: 0.2,
@@ -1924,239 +1923,137 @@ function HomeScreen() {
                 Upcoming Exams
               </Text>
               <View
-                            style={[
-                              utilityStyles.flexCol,
-                              utilityStyles.pSm,
-                              utilityStyles.roundedXl,
-                              lightModeStyles.borderColor,
-                              utilityStyles.gSm,
-                              { borderWidth: 0.5 },
-                            ]}
-                          >
-                            <View>
-                              <View
-                                style={[
-                                  utilityStyles.flexRow,
-                                  utilityStyles.alignCenter,
-                                  utilityStyles.w100,
-                                  utilityStyles.justifyBetween,
-                                ]}
-                              >
-                                <View>
-                                  <Text
-                                    style={[
-                                      utilityStyles.textMd,
-                                      utilityStyles.fontSemiBold,
-                                      lightModeStyles.textLight,
-                                    ]}
-                                  >
-                                    First Semester Exam
-                                  </Text>
-                                </View>
-                                <View>
-                                  <Option
-                                    width={24}
-                                    height={24}
-                                    color={colorPrimitives.light.colorTextPrimary}
-                                  />
-                                </View>
-                              </View>
-                              <View
-                                style={[
-                                  utilityStyles.flexRow,
-                                  utilityStyles.alignCenter,
-                                  utilityStyles.g2Xs,
-                                ]}
-                              >
-                                <View>
-                                  <Level
-                                    height={18}
-                                    width={18}
-                                    color={colorPrimitives.light.colorTextPrimary}
-                                  />
-                                </View>
-                                <View>
-                                  <Text
-                                    style={[
-                                      utilityStyles.textSm,
-                                      utilityStyles.fontMedium,
-                                      lightModeStyles.textLight,
-                                    ]}
-                                  >
-                                    Software Engineering, Level 100
-                                  </Text>
-                                </View>
-                              </View>
-                            </View>
-                            <View>
-                              <Text
-                                style={[
-                                  utilityStyles.textSm,
-                                  utilityStyles.fontMedium,
-                                  lightModeStyles.textLight,
-                                  { letterSpacing: 0.2, lineHeight: 20 },
-                                ]}
-                              >
-                                The First Semester CA is a comprehensive test covering all
-                                course material taught in the first half of the academic year.
-                                It assesses foundational knowledge and prepares students for
-                                future topics
-                              </Text>
-                            </View>
-                             <View style={[utilityStyles.flexRow, utilityStyles.justifyBetween, utilityStyles.w100, utilityStyles.alignCenter]}>
-                                <View style={[utilityStyles.flexCol, { gap: 4 }]}>
-                              <View
-                                style={[
-                                  utilityStyles.flexRow,
-                                  utilityStyles.alignCenter,
-                                  utilityStyles.gXs,
-                                ]}
-                              >
-                                <CalendarLine
-                                  width={18}
-                                  height={18}
-                                  color={colorPrimitives.light.colorTextPrimary}
-                                />
-                                <View
-                                  style={[
-                                    utilityStyles.flexRow,
-                                    utilityStyles.alignCenter,
-                                    utilityStyles.g2Xs,
-                                  ]}
-                                >
-                                  <Text
-                                    style={[
-                                      utilityStyles.fontMedium,
-                                      utilityStyles.textSm,
-                                      lightModeStyles.textLight,
-                                    ]}
-                                  >
-                                    03 Nov 2026
-                                  </Text>
-                                  <Dash
-                                    width={18}
-                                    height={18}
-                                    color={colorPrimitives.light.colorTextPrimary}
-                                  />
-                                  <Text
-                                    style={[
-                                      utilityStyles.fontMedium,
-                                      utilityStyles.textSm,
-                                      lightModeStyles.textLight,
-                                    ]}
-                                  >
-                                    15 Nov 2026
-                                  </Text>
-                                </View>
-                              </View>
-                              <View
-                                style={[
-                                  utilityStyles.flexRow,
-                                  utilityStyles.alignCenter,
-                                  utilityStyles.gXs,
-                                ]}
-                              >
-                                <ClockLine
-                                  width={18}
-                                  height={18}
-                                  color={colorPrimitives.light.colorTextPrimary}
-                                />
-                                <Text
-                                  style={[
-                                    utilityStyles.fontMedium,
-                                    utilityStyles.textSm,
-                                    lightModeStyles.textLight,
-                                  ]}
-                                >
-                                  14 Days Left
-                                </Text>
-                              </View>
-                            </View>
-                            <TouchableOpacity
-                              style={[utilityStyles.flexCol, utilityStyles.alignCenter, utilityStyles.justifyCenter, lightModeStyles.bgPrimary, utilityStyles.roundedCircle,  {width:40, height:40, transform: [{ rotate: "45deg" }] }]}
-                            >
-                            <Arrow  height={18} width={18} color={colorPrimitives.light.colorOnPrimary}/>
-                            </TouchableOpacity>
-                             </View>
-                          </View>
-            </View>
-            <View
-              style={[
-                utilityStyles.flexCol,
-                utilityStyles.gXs,
-                utilityStyles.w100,
-              ]}
-            >
-              <Text
                 style={[
-                  utilityStyles.fontBold,
-                  utilityStyles.textSm,
-                  lightModeStyles.textLight,
-                ]}
-              >
-                Elections
-              </Text>
-              <View
-                style={[
-                  utilityStyles.roundedXl,
-                  utilityStyles.pMd,
-                  lightModeStyles.borderColor,
                   utilityStyles.flexCol,
+                  utilityStyles.pSm,
+                  utilityStyles.roundedXl,
+                  lightModeStyles.borderColor,
                   utilityStyles.gMd,
-                  { backgroundColor: "#fff", borderWidth: 0.5 },
+                  { borderWidth: 0.5 },
                 ]}
               >
-                <Text
-                  style={[
-                    utilityStyles.fontSemiBold,
-                    utilityStyles.textSm,
-                    lightModeStyles.textLight,
-                  ]}
-                >
-                  Student Union Government Election
-                </Text>
-                <Text
-                  style={[
-                    utilityStyles.fontRegular,
-                    utilityStyles.textSm,
-                    lightModeStyles.textLight,
-                    {
-                      letterSpacing: 0.2,
-                      lineHeight: 20,
-                    },
-                  ]}
-                >
-                  Exciting News! The window is now open for you to submit your
-                  candidacy. Don't miss this chance to be part of our upcoming
-                  election—step up, get involved, and make your voice heard!
-                </Text>
-                <View style={[utilityStyles.flexCol, utilityStyles.g2Xs]}>
-                  <Text
-                    style={[
-                      utilityStyles.fontRegular,
-                      utilityStyles.textSm,
-                      lightModeStyles.textLight,
-                      {
-                        letterSpacing: 0.2,
-                        lineHeight: 20,
-                      },
-                    ]}
-                  >
-                    Application Window Period
-                  </Text>
+                <View>
                   <View
                     style={[
                       utilityStyles.flexRow,
                       utilityStyles.alignCenter,
-                      utilityStyles.gXs,
+                      utilityStyles.w100,
+                      utilityStyles.justifyBetween,
                     ]}
                   >
                     <View>
-                      <CalendarLine
-                        width={14}
-                        height={14}
+                      <Text
+                        style={[
+                          utilityStyles.textMd,
+                          utilityStyles.fontSemiBold,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        First Semester Exam
+                      </Text>
+                    </View>
+                    <View>
+                      <Option
+                        width={24}
+                        height={24}
                         color={colorPrimitives.light.colorTextPrimary}
                       />
+                    </View>
+                  </View>
+                  <View
+                    style={[
+                      utilityStyles.flexRow,
+                      utilityStyles.alignCenter,
+                      utilityStyles.g2Xs,
+                    ]}
+                  >
+                    <View>
+                      <Level
+                        height={18}
+                        width={18}
+                        color={colorPrimitives.light.colorTextPrimary}
+                      />
+                    </View>
+                    <View>
+                      <Text
+                        style={[
+                          utilityStyles.textSm,
+                          utilityStyles.fontMedium,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        Software Engineering, Level 100
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View>
+                  <Text
+                    style={[
+                      utilityStyles.textSm,
+                      utilityStyles.fontMedium,
+                      lightModeStyles.textLight,
+                      { letterSpacing: 0.2, lineHeight: 20 },
+                    ]}
+                  >
+                    The First Semester CA is a comprehensive test covering all
+                    course material taught in the first half of the academic
+                    year. It assesses foundational knowledge and prepares
+                    students for future topics
+                  </Text>
+                </View>
+                <View
+                  style={[
+                    utilityStyles.flexRow,
+                    utilityStyles.justifyBetween,
+                    utilityStyles.w100,
+                    utilityStyles.alignCenter,
+                  ]}
+                >
+                  <View style={[utilityStyles.flexCol, { gap: 4 }]}>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.gXs,
+                      ]}
+                    >
+                      <CalendarLine
+                        width={18}
+                        height={18}
+                        color={colorPrimitives.light.colorTextPrimary}
+                      />
+                      <View
+                        style={[
+                          utilityStyles.flexRow,
+                          utilityStyles.alignCenter,
+                          utilityStyles.g2Xs,
+                        ]}
+                      >
+                        <Text
+                          style={[
+                            utilityStyles.fontMedium,
+                            utilityStyles.textSm,
+                            lightModeStyles.textLight,
+                          ]}
+                        >
+                          03 Nov 2026
+                        </Text>
+                        <Dash
+                          width={18}
+                          height={18}
+                          color={colorPrimitives.light.colorTextPrimary}
+                        />
+                        <Text
+                          style={[
+                            utilityStyles.fontMedium,
+                            utilityStyles.textSm,
+                            lightModeStyles.textLight,
+                          ]}
+                        >
+                          15 Nov 2026
+                        </Text>
+                      </View>
                     </View>
                     <View
                       style={[
@@ -2165,22 +2062,9 @@ function HomeScreen() {
                         utilityStyles.gXs,
                       ]}
                     >
-                      <Text
-                        style={[
-                          utilityStyles.fontMedium,
-                          utilityStyles.textSm,
-                          lightModeStyles.textLight,
-                          {
-                            letterSpacing: 0.2,
-                            lineHeight: 20,
-                          },
-                        ]}
-                      >
-                        Jan 24 2026
-                      </Text>
-                      <Dash
-                        width={14}
-                        height={14}
+                      <ClockLine
+                        width={18}
+                        height={18}
                         color={colorPrimitives.light.colorTextPrimary}
                       />
                       <Text
@@ -2188,35 +2072,31 @@ function HomeScreen() {
                           utilityStyles.fontMedium,
                           utilityStyles.textSm,
                           lightModeStyles.textLight,
-                          {
-                            letterSpacing: 0.2,
-                            lineHeight: 20,
-                          },
                         ]}
                       >
-                        Jan 30 2026
+                        14 Days Left
                       </Text>
                     </View>
                   </View>
-                </View>
-                <View style={[utilityStyles.w100, utilityStyles.justifyEnd]}>
                   <TouchableOpacity
                     style={[
+                      utilityStyles.flexCol,
+                      utilityStyles.alignCenter,
+                      utilityStyles.justifyCenter,
                       lightModeStyles.bgPrimary,
                       utilityStyles.roundedCircle,
-                      { paddingVertical: 16, paddingHorizontal: 4 },
+                      {
+                        width: 40,
+                        height: 40,
+                        transform: [{ rotate: "45deg" }],
+                      },
                     ]}
                   >
-                    <Text
-                      style={[
-                        lightModeStyles.colorOnPrimary,
-                        utilityStyles.fontMedium,
-                        utilityStyles.textXs,
-                        utilityStyles.textCenter,
-                      ]}
-                    >
-                      Apply
-                    </Text>
+                    <Arrow
+                      height={18}
+                      width={18}
+                      color={colorPrimitives.light.colorOnPrimary}
+                    />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -2235,205 +2115,506 @@ function HomeScreen() {
                   lightModeStyles.textLight,
                 ]}
               >
+                Elections
+              </Text>
+              <ScrollView
+                horizontal={true}
+                contentContainerStyle={{
+                  columnGap: 12,
+                }}
+              >
+                <View
+                  style={[
+                    utilityStyles.roundedXl,
+                    utilityStyles.pMd,
+                    lightModeStyles.borderColor,
+                    utilityStyles.flexCol,
+                    utilityStyles.gMd,
+                    { backgroundColor: "#fff", borderWidth: 0.5, width: 365 },
+                  ]}
+                >
+                  <Text
+                    style={[
+                      utilityStyles.fontSemiBold,
+                      utilityStyles.textSm,
+                      lightModeStyles.textLight,
+                    ]}
+                  >
+                    Student Union Government Election
+                  </Text>
+                  <Text
+                    style={[
+                      utilityStyles.fontRegular,
+                      utilityStyles.textSm,
+                      lightModeStyles.textLight,
+                      {
+                        letterSpacing: 0.2,
+                        lineHeight: 20,
+                      },
+                    ]}
+                  >
+                    Exciting News! The window is now open for you to submit your
+                    candidacy. Don't miss this chance to be part of our upcoming
+                    election—step up, get involved, and make your voice heard!
+                  </Text>
+                  <View style={[utilityStyles.flexCol, utilityStyles.g2Xs]}>
+                    <Text
+                      style={[
+                        utilityStyles.fontRegular,
+                        utilityStyles.textSm,
+                        lightModeStyles.textLight,
+                        {
+                          letterSpacing: 0.2,
+                          lineHeight: 20,
+                        },
+                      ]}
+                    >
+                      Application Window Period
+                    </Text>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.gXs,
+                      ]}
+                    >
+                      <View>
+                        <CalendarLine
+                          width={14}
+                          height={14}
+                          color={colorPrimitives.light.colorTextPrimary}
+                        />
+                      </View>
+                      <View
+                        style={[
+                          utilityStyles.flexRow,
+                          utilityStyles.alignCenter,
+                          utilityStyles.gXs,
+                        ]}
+                      >
+                        <Text
+                          style={[
+                            utilityStyles.fontMedium,
+                            utilityStyles.textSm,
+                            lightModeStyles.textLight,
+                            {
+                              letterSpacing: 0.2,
+                              lineHeight: 20,
+                            },
+                          ]}
+                        >
+                          Jan 24 2026
+                        </Text>
+                        <Dash
+                          width={14}
+                          height={14}
+                          color={colorPrimitives.light.colorTextPrimary}
+                        />
+                        <Text
+                          style={[
+                            utilityStyles.fontMedium,
+                            utilityStyles.textSm,
+                            lightModeStyles.textLight,
+                            {
+                              letterSpacing: 0.2,
+                              lineHeight: 20,
+                            },
+                          ]}
+                        >
+                          Jan 30 2026
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View style={[utilityStyles.justifyEnd]}>
+                    <TouchableOpacity
+                      style={[
+                        lightModeStyles.bgPrimary,
+                        utilityStyles.roundedCircle,
+                        { paddingVertical: 16, paddingHorizontal: 4 },
+                      ]}
+                      onPress={() => router.push("election/ElectionRole")}
+                    >
+                      <Text
+                        style={[
+                          lightModeStyles.colorOnPrimary,
+                          utilityStyles.fontMedium,
+                          utilityStyles.textXs,
+                          utilityStyles.textCenter,
+                        ]}
+                      >
+                        Apply
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                <View
+                  style={[
+                    utilityStyles.roundedXl,
+                    utilityStyles.pMd,
+                    lightModeStyles.borderColor,
+                    utilityStyles.flexCol,
+                    utilityStyles.gMd,
+                    { backgroundColor: "#fff", borderWidth: 0.5, width: 365 },
+                  ]}
+                >
+                  <Text
+                    style={[
+                      utilityStyles.fontSemiBold,
+                      utilityStyles.textSm,
+                      lightModeStyles.textLight,
+                    ]}
+                  >
+                    Student Union Government Election
+                  </Text>
+                  <Text
+                    style={[
+                      utilityStyles.fontRegular,
+                      utilityStyles.textSm,
+                      lightModeStyles.textLight,
+                      {
+                        letterSpacing: 0.2,
+                        lineHeight: 20,
+                      },
+                    ]}
+                  >
+                    Exciting News! The window is now open for you to submit your
+                    candidacy. Don't miss this chance to be part of our upcoming
+                    election—step up, get involved, and make your voice heard!
+                  </Text>
+                  <View style={[utilityStyles.flexCol, utilityStyles.g2Xs]}>
+                    <Text
+                      style={[
+                        utilityStyles.fontRegular,
+                        utilityStyles.textSm,
+                        lightModeStyles.textLight,
+                        {
+                          letterSpacing: 0.2,
+                          lineHeight: 20,
+                        },
+                      ]}
+                    >
+                      Application Window Period
+                    </Text>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.alignCenter,
+                        utilityStyles.gXs,
+                      ]}
+                    >
+                      <View>
+                        <CalendarLine
+                          width={14}
+                          height={14}
+                          color={colorPrimitives.light.colorTextPrimary}
+                        />
+                      </View>
+                      <View
+                        style={[
+                          utilityStyles.flexRow,
+                          utilityStyles.alignCenter,
+                          utilityStyles.gXs,
+                        ]}
+                      >
+                        <Text
+                          style={[
+                            utilityStyles.fontMedium,
+                            utilityStyles.textSm,
+                            lightModeStyles.textLight,
+                            {
+                              letterSpacing: 0.2,
+                              lineHeight: 20,
+                            },
+                          ]}
+                        >
+                          Jan 24 2026
+                        </Text>
+                        <Dash
+                          width={14}
+                          height={14}
+                          color={colorPrimitives.light.colorTextPrimary}
+                        />
+                        <Text
+                          style={[
+                            utilityStyles.fontMedium,
+                            utilityStyles.textSm,
+                            lightModeStyles.textLight,
+                            {
+                              letterSpacing: 0.2,
+                              lineHeight: 20,
+                            },
+                          ]}
+                        >
+                          Jan 30 2026
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View>
+                    <TouchableOpacity
+                      style={[
+                        lightModeStyles.bgPrimary,
+                        utilityStyles.roundedCircle,
+                        { paddingVertical: 16, paddingHorizontal: 4 },
+                      ]}
+                      onPress={() => router.push("election/ElectionVoting")}
+                    >
+                      <Text
+                        style={[
+                          lightModeStyles.colorOnPrimary,
+                          utilityStyles.fontMedium,
+                          utilityStyles.textXs,
+                          utilityStyles.textCenter,
+                        ]}
+                      >
+                        Cast Vote
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </ScrollView>
+            </View>
+            <View
+              style={[
+                utilityStyles.flexCol,
+                utilityStyles.gXs,
+                utilityStyles.w100,
+              ]}
+            >
+              <Text
+                style={[
+                  utilityStyles.fontBold,
+                  utilityStyles.textSm,
+                  lightModeStyles.textLight,
+                ]}
+              >
                 School Events
               </Text>
-              <ScrollView horizontal={true} contentContainerStyle={{
-                    columnGap: 12
-                  }}>
-                <View style={[utilityStyles.flexCol, utilityStyles.gSm, {width:350, height:'auto', maxHeight:400}]}>
-                <Image 
-                  source={eventImage}
-                  style={{width:"100%",  height:300, borderRadius:24}}
-                />
+              <ScrollView
+                horizontal={true}
+                contentContainerStyle={{
+                  columnGap: 12,
+                }}
+              >
                 <View
                   style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.alignCenter,
+                    utilityStyles.flexCol,
+                    utilityStyles.gSm,
+                    { width: 350, height: "auto", maxHeight: 400 },
                   ]}
                 >
-                  <View style={[utilityStyles.flexCol, utilityStyles.g2Xs]}>
-                    <Text
-                      style={[
-                        utilityStyles.fontSemiBold,
-                        utilityStyles.textSm,
-                        lightModeStyles.textLight,
-                      ]}
-                    >
-                      Cultural Week Activities
-                    </Text>
-                    <View>
-                      <View
+                  <Image
+                    source={eventImage}
+                    style={{ width: "100%", height: 300, borderRadius: 24 }}
+                  />
+                  <View
+                    style={[
+                      utilityStyles.flexRow,
+                      utilityStyles.justifyBetween,
+                      utilityStyles.alignCenter,
+                    ]}
+                  >
+                    <View style={[utilityStyles.flexCol, utilityStyles.g2Xs]}>
+                      <Text
                         style={[
-                          utilityStyles.flexRow,
-                          utilityStyles.alignCenter,
-                          utilityStyles.gXs,
+                          utilityStyles.fontSemiBold,
+                          utilityStyles.textSm,
+                          lightModeStyles.textLight,
                         ]}
                       >
-                        <View>
-                          <CalendarLine
-                            width={14}
-                            height={14}
-                            color={colorPrimitives.light.colorTextPrimary}
-                          />
-                        </View>
+                        Cultural Week Activities
+                      </Text>
+                      <View>
                         <View
                           style={[
                             utilityStyles.flexRow,
                             utilityStyles.alignCenter,
-                            utilityStyles.g2Xs,
+                            utilityStyles.gXs,
                           ]}
                         >
-                          <Text
+                          <View>
+                            <CalendarLine
+                              width={14}
+                              height={14}
+                              color={colorPrimitives.light.colorTextPrimary}
+                            />
+                          </View>
+                          <View
                             style={[
-                              utilityStyles.fontMedium,
-                              utilityStyles.textSm,
-                              lightModeStyles.textLight,
-                              {
-                                letterSpacing: 0.2,
-                                lineHeight: 20,
-                              },
+                              utilityStyles.flexRow,
+                              utilityStyles.alignCenter,
+                              utilityStyles.g2Xs,
                             ]}
                           >
-                            Jan 24 2026
-                          </Text>
-                          <Dash
-                            width={14}
-                            height={14}
-                            color={colorPrimitives.light.colorTextPrimary}
-                          />
-                          <Text
-                            style={[
-                              utilityStyles.fontMedium,
-                              utilityStyles.textSm,
-                              lightModeStyles.textLight,
-                              {
-                                letterSpacing: 0.2,
-                                lineHeight: 20,
-                              },
-                            ]}
-                          >
-                            Jan 30 2026
-                          </Text>
+                            <Text
+                              style={[
+                                utilityStyles.fontMedium,
+                                utilityStyles.textSm,
+                                lightModeStyles.textLight,
+                                {
+                                  letterSpacing: 0.2,
+                                  lineHeight: 20,
+                                },
+                              ]}
+                            >
+                              Jan 24 2026
+                            </Text>
+                            <Dash
+                              width={14}
+                              height={14}
+                              color={colorPrimitives.light.colorTextPrimary}
+                            />
+                            <Text
+                              style={[
+                                utilityStyles.fontMedium,
+                                utilityStyles.textSm,
+                                lightModeStyles.textLight,
+                                {
+                                  letterSpacing: 0.2,
+                                  lineHeight: 20,
+                                },
+                              ]}
+                            >
+                              Jan 30 2026
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.gXs,
+                        utilityStyles.alignCenter,
+                      ]}
+                    >
+                      <Text
+                        style={[
+                          utilityStyles.fontSemiBold,
+                          utilityStyles.textSm,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        200
+                      </Text>
+                      <HeartLine
+                        width={24}
+                        height={24}
+                        color={colorPrimitives.light.colorTextPrimary}
+                      />
+                    </View>
                   </View>
+                </View>
+                <View
+                  style={[
+                    utilityStyles.flexCol,
+                    utilityStyles.gSm,
+                    { width: 350, height: "auto", maxHeight: 400 },
+                  ]}
+                >
+                  <Image
+                    source={eventImage}
+                    style={{ width: "100%", height: 300, borderRadius: 24 }}
+                  />
                   <View
                     style={[
                       utilityStyles.flexRow,
-                      utilityStyles.gXs,
+                      utilityStyles.justifyBetween,
                       utilityStyles.alignCenter,
                     ]}
                   >
-                    <Text style={[
-                        utilityStyles.fontSemiBold,
-                        utilityStyles.textSm,
-                        lightModeStyles.textLight,
-                      ]}>200</Text>
-                    <HeartLine   width={24}
-                            height={24}
-                            color={colorPrimitives.light.colorTextPrimary}/>
-                  </View>
-                </View>
-              </View>
-              <View style={[utilityStyles.flexCol, utilityStyles.gSm, {width:350, height:'auto', maxHeight:400}]}>
-                <Image 
-                  source={eventImage}
-                  style={{width:"100%",  height:300, borderRadius:24}}
-                />
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.justifyBetween,
-                    utilityStyles.alignCenter,
-                  ]}
-                >
-                  <View style={[utilityStyles.flexCol, utilityStyles.g2Xs]}>
-                    <Text
-                      style={[
-                        utilityStyles.fontSemiBold,
-                        utilityStyles.textSm,
-                        lightModeStyles.textLight,
-                      ]}
-                    >
-                      Cultural Week Activities
-                    </Text>
-                    <View>
-                      <View
+                    <View style={[utilityStyles.flexCol, utilityStyles.g2Xs]}>
+                      <Text
                         style={[
-                          utilityStyles.flexRow,
-                          utilityStyles.alignCenter,
-                          utilityStyles.gXs,
+                          utilityStyles.fontSemiBold,
+                          utilityStyles.textSm,
+                          lightModeStyles.textLight,
                         ]}
                       >
-                        <View>
-                          <CalendarLine
-                            width={14}
-                            height={14}
-                            color={colorPrimitives.light.colorTextPrimary}
-                          />
-                        </View>
+                        Cultural Week Activities
+                      </Text>
+                      <View>
                         <View
                           style={[
                             utilityStyles.flexRow,
                             utilityStyles.alignCenter,
-                            utilityStyles.g2Xs,
+                            utilityStyles.gXs,
                           ]}
                         >
-                          <Text
+                          <View>
+                            <CalendarLine
+                              width={14}
+                              height={14}
+                              color={colorPrimitives.light.colorTextPrimary}
+                            />
+                          </View>
+                          <View
                             style={[
-                              utilityStyles.fontMedium,
-                              utilityStyles.textSm,
-                              lightModeStyles.textLight,
-                              {
-                                letterSpacing: 0.2,
-                                lineHeight: 20,
-                              },
+                              utilityStyles.flexRow,
+                              utilityStyles.alignCenter,
+                              utilityStyles.g2Xs,
                             ]}
                           >
-                            Jan 24 2026
-                          </Text>
-                          <Dash
-                            width={14}
-                            height={14}
-                            color={colorPrimitives.light.colorTextPrimary}
-                          />
-                          <Text
-                            style={[
-                              utilityStyles.fontMedium,
-                              utilityStyles.textSm,
-                              lightModeStyles.textLight,
-                              {
-                                letterSpacing: 0.2,
-                                lineHeight: 20,
-                              },
-                            ]}
-                          >
-                            Jan 30 2026
-                          </Text>
+                            <Text
+                              style={[
+                                utilityStyles.fontMedium,
+                                utilityStyles.textSm,
+                                lightModeStyles.textLight,
+                                {
+                                  letterSpacing: 0.2,
+                                  lineHeight: 20,
+                                },
+                              ]}
+                            >
+                              Jan 24 2026
+                            </Text>
+                            <Dash
+                              width={14}
+                              height={14}
+                              color={colorPrimitives.light.colorTextPrimary}
+                            />
+                            <Text
+                              style={[
+                                utilityStyles.fontMedium,
+                                utilityStyles.textSm,
+                                lightModeStyles.textLight,
+                                {
+                                  letterSpacing: 0.2,
+                                  lineHeight: 20,
+                                },
+                              ]}
+                            >
+                              Jan 30 2026
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>
-                  </View>
-                  <View
-                    style={[
-                      utilityStyles.flexRow,
-                      utilityStyles.gXs,
-                      utilityStyles.alignCenter,
-                    ]}
-                  >
-                    <Text style={[
-                        utilityStyles.fontSemiBold,
-                        utilityStyles.textSm,
-                        lightModeStyles.textLight,
-                      ]}>200</Text>
-                    <HeartLine   width={24}
-                            height={24}
-                            color={colorPrimitives.light.colorTextPrimary}/>
+                    <View
+                      style={[
+                        utilityStyles.flexRow,
+                        utilityStyles.gXs,
+                        utilityStyles.alignCenter,
+                      ]}
+                    >
+                      <Text
+                        style={[
+                          utilityStyles.fontSemiBold,
+                          utilityStyles.textSm,
+                          lightModeStyles.textLight,
+                        ]}
+                      >
+                        200
+                      </Text>
+                      <HeartLine
+                        width={24}
+                        height={24}
+                        color={colorPrimitives.light.colorTextPrimary}
+                      />
+                    </View>
                   </View>
                 </View>
-              </View>
               </ScrollView>
             </View>
           </View>

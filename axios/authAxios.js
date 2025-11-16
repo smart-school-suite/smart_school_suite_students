@@ -1,17 +1,26 @@
 import axios from 'axios';
 import { secureStorage } from '../utils/securesStore';
+
 const axiosInstance = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api/v1/', 
-  withCredentials:true,
-  withXSRFToken:true
+  baseURL: 'http://172.20.10.4:8000/api/v1/', 
+  withCredentials: true,
+  withXSRFToken: true,
 });
 
-axiosInstance.interceptors.request.use(
-  (config) => {
-    const authCredentials = handleGetAuthCredentials();
+// 💡 Ensure this is above interceptor
+const handleGetAuthCredentials = async () => {
+  const apiKey = await secureStorage.getItem("API-KEY");
+  const authToken = await secureStorage.getItem("AUTH-TOKEN");
 
-    const apiKey = authCredentials.apiKey;
-    const token = authCredentials.token;
+  return {
+    apiKey,
+    authToken
+  };
+};
+
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    const { apiKey, authToken } = await handleGetAuthCredentials();
 
     if (!config.headers) {
       config.headers = {};
@@ -19,7 +28,10 @@ axiosInstance.interceptors.request.use(
 
     if (apiKey) {
       config.headers["API-KEY"] = apiKey;
-      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+
+    if (authToken) {
+      config.headers["Authorization"] = `Bearer ${authToken}`;
     }
 
     config.headers["Content-Type"] = "application/json";
@@ -27,25 +39,12 @@ axiosInstance.interceptors.request.use(
 
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 export default axiosInstance;
-
-const handleGetAuthCredentials = async () => {
-    const apiKey = await secureStorage.getItem("API-KEY");
-    const authToken = await secureStorage.getItem("AUTH-TOKEN");
-    return {
-         apiKey,
-         authToken
-    }
-}
