@@ -1,12 +1,12 @@
 import { Stack } from "expo-router";
 
-export default function ElectionLayout() {
+function ExamGradingLayout() {
   return (
     <Stack
       screenOptions={{
         headerShown: false,
       }}
-    >
-    </Stack>
+    />
   );
 }
+export default ExamGradingLayout;

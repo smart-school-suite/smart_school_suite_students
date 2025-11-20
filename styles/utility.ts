@@ -55,7 +55,13 @@ export const utilityStyles = StyleSheet.create({
   text2Xl: { fontSize: typograpyPrimitives["2xl"] },
   text3Xl: { fontSize: typograpyPrimitives["3xl"] },
   text4Xl: { fontSize: typograpyPrimitives["4xl"] },
-
+ 
+  textCapitalize: {
+     textTransform:"capitalize"
+  },
+  textUpperCase: {
+     textTransform:"uppercase"
+  },
   absolute: { position: "absolute" },
   relative: { position: "relative" },
 

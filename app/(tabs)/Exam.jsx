@@ -1,22 +1,32 @@
+import React, { useState } from "react";
 import {
+  Image,
   Pressable,
   ScrollView,
+  StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Announcement } from "../../assets/icons/Announcement";
-import { Arrow } from "../../assets/icons/Arrow";
-import { CalendarLine } from "../../assets/icons/CalendarLine";
-import { ClockLine } from "../../assets/icons/ClockLine";
-import { Dash } from "../../assets/icons/Dash";
-import { Level } from "../../assets/icons/Level";
-import { Option } from "../../assets/icons/Option";
-import { colorPrimitives } from "../../constants/theme";
+import { useSelector } from "react-redux";
+import { ExamCard, ExamResultCard } from "../../components/card/Exam";
+import {
+  ExamListSkeleton,
+  ExamScreenTabSkeleton,
+} from "../../components/skeleton/ExamScreenSkeleton";
+import { useGetAllExams } from "../../hooks/api/exam/useGetAllExams";
+import { useGetExamBySemester } from "../../hooks/api/exam/useGetExamBySemester";
+import { useGetSemesters } from "../../hooks/api/semester/useGetSemesters";
 import { lightModeStyles } from "../../styles/theme/light";
 import { utilityStyles } from "../../styles/utility";
 function ExamScreen() {
+  const authUser = useSelector((state) => state.auth.user);
+  const { data: semesters, isLoading: isSemesterLoading } = useGetSemesters();
+  const [tab, setTab] = useState({
+    id: "all",
+    title: "all",
+    count: 0,
+  });
   return (
     <>
       <SafeAreaView
@@ -53,610 +63,75 @@ function ExamScreen() {
                 columnGap: 12,
               }}
             >
-              <Pressable
-                style={[
-                  utilityStyles.roundedCircle,
-                  lightModeStyles.bgPrimary,
-                  utilityStyles.flexCol,
-                  utilityStyles.alignCenter,
-                  utilityStyles.justifyCenter,
-                  {
-                    paddingHorizontal: 16,
-                    minWidth: 55,
-                    width: "auto",
-                    maxWidth: 200,
-                    height: 48,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    lightModeStyles.colorOnPrimary,
-                    utilityStyles.textXs,
-                    utilityStyles.textCenter,
-                  ]}
-                >
-                  All
-                </Text>
-              </Pressable>
-              <Pressable
-                style={[
-                  utilityStyles.roundedCircle,
-                  utilityStyles.bgPrimary100,
-                  utilityStyles.flexCol,
-                  utilityStyles.alignCenter,
-                  utilityStyles.justifyCenter,
-                  {
-                    paddingHorizontal: 16,
-                    minWidth: 55,
-                    width: "auto",
-                    maxWidth: 200,
-                    height: 48,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    lightModeStyles.colorPrimary,
-                    utilityStyles.textXs,
-                    utilityStyles.textCenter,
-                    utilityStyles.fontSemiBold,
-                  ]}
-                >
-                  First Semester
-                </Text>
-              </Pressable>
-              <Pressable
-                style={[
-                  utilityStyles.roundedCircle,
-                  utilityStyles.bgPrimary100,
-                  utilityStyles.flexCol,
-                  utilityStyles.alignCenter,
-                  utilityStyles.justifyCenter,
-                  {
-                    paddingHorizontal: 16,
-                    minWidth: 55,
-                    width: "auto",
-                    maxWidth: 200,
-                    height: 48,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    lightModeStyles.colorPrimary,
-                    utilityStyles.textXs,
-                    utilityStyles.textCenter,
-                    utilityStyles.fontSemiBold,
-                  ]}
-                >
-                  Second Semester
-                </Text>
-              </Pressable>
-              <Pressable
-                style={[
-                  utilityStyles.roundedCircle,
-                  utilityStyles.bgPrimary100,
-                  utilityStyles.flexCol,
-                  utilityStyles.alignCenter,
-                  utilityStyles.justifyCenter,
-                  {
-                    paddingHorizontal: 16,
-                    minWidth: 55,
-                    width: "auto",
-                    maxWidth: 200,
-                    height: 48,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    lightModeStyles.colorPrimary,
-                    utilityStyles.textXs,
-                    utilityStyles.textCenter,
-                    utilityStyles.fontSemiBold,
-                  ]}
-                >
-                  Third Semester
-                </Text>
-              </Pressable>
+              {isSemesterLoading ? (
+                <ExamScreenTabSkeleton />
+              ) : (
+                <>
+                  <Pressable
+                    style={[
+                      styles.tabContainer,
+                      tab.id == "all"
+                        ? styles.tabContainerActive
+                        : styles.tabContainerInActive,
+                    ]}
+                    onPress={() => {
+                      setTab((prev) => ({
+                        ...prev,
+                        count: 0,
+                        id: "all",
+                        title: "All",
+                      }));
+                    }}
+                  >
+                    <Text
+                      style={[
+                        styles.tabText,
+                        tab.id == "all"
+                          ? styles.tabTextActive
+                          : styles.tabTextInActive,
+                      ]}
+                    >
+                      All
+                    </Text>
+                  </Pressable>
+                  {semesters.data.map((items) => (
+                    <Pressable
+                      style={[
+                        styles.tabContainer,
+                        tab.id == items.id
+                          ? styles.tabContainerActive
+                          : styles.tabContainerInActive,
+                      ]}
+                      key={items.id}
+                      onPress={() => {
+                        setTab((prev) => ({
+                          ...prev,
+                          count: items.count,
+                          id: items.id,
+                          title: items.name,
+                        }));
+                      }}
+                    >
+                      <Text
+                        style={[
+                          styles.tabText,
+                          tab.id == items.id
+                            ? styles.tabTextActive
+                            : styles.tabTextInActive,
+                        ]}
+                      >
+                        {items.name}
+                      </Text>
+                    </Pressable>
+                  ))}
+                </>
+              )}
             </ScrollView>
-            <View
-              style={[
-                utilityStyles.flexCol,
-                utilityStyles.pSm,
-                utilityStyles.roundedXl,
-                lightModeStyles.borderColor,
-                utilityStyles.gSm,
-                { borderWidth: 0.5 },
-              ]}
-            >
-              <View
-                style={[
-                  utilityStyles.flexRow,
-                  utilityStyles.alignCenter,
-                  utilityStyles.gSm,
-                ]}
-              >
-                <View>
-                  <Announcement
-                    color={colorPrimitives.light.colorTextPrimary}
-                    width={24}
-                    height={24}
-                  />
-                </View>
-                <Text
-                  style={[
-                    utilityStyles.textSm,
-                    utilityStyles.fontSemiBold,
-                    lightModeStyles.textLight,
-                  ]}
-                >
-                  First Semester CA Results Are Out!
-                </Text>
-              </View>
-              <View>
-                <Text
-                  style={[
-                    utilityStyles.textSm,
-                    utilityStyles.fontMedium,
-                    lightModeStyles.textLight,
-                    {
-                      letterSpacing: 0.2,
-                      lineHeight: 20,
-                    },
-                  ]}
-                >
-                  Your results are now available. check your performance today!
-                </Text>
-              </View>
-              <TouchableOpacity
-                style={[
-                  lightModeStyles.bgPrimary,
-                  utilityStyles.w100,
-                  utilityStyles.roundedCircle,
-                  utilityStyles.flexCol,
-                  utilityStyles.alignCenter,
-                  utilityStyles.justifyCenter,
-                  {
-                    height: 50,
-                    padding: 12,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    utilityStyles.textSm,
-                    utilityStyles.fontMedium,
-                    lightModeStyles.colorOnPrimary,
-                  ]}
-                >
-                  View Results
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={[
-                utilityStyles.flexCol,
-                utilityStyles.pSm,
-                utilityStyles.roundedXl,
-                lightModeStyles.borderColor,
-                utilityStyles.gSm,
-                { borderWidth: 0.5 },
-              ]}
-            >
-              <View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.w100,
-                    utilityStyles.justifyBetween,
-                  ]}
-                >
-                  <View>
-                    <Text
-                      style={[
-                        utilityStyles.textMd,
-                        utilityStyles.fontSemiBold,
-                        lightModeStyles.textLight,
-                      ]}
-                    >
-                      First Semester Exam
-                    </Text>
-                  </View>
-                  <View>
-                    <Option
-                      width={24}
-                      height={24}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.g2Xs,
-                  ]}
-                >
-                  <View>
-                    <Level
-                      height={18}
-                      width={18}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <View>
-                    <Text
-                      style={[
-                        utilityStyles.textSm,
-                        utilityStyles.fontMedium,
-                        lightModeStyles.textLight,
-                      ]}
-                    >
-                      Software Engineering, Level 100
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View>
-                <Text
-                  style={[
-                    utilityStyles.textSm,
-                    utilityStyles.fontMedium,
-                    lightModeStyles.textLight,
-                    { letterSpacing: 0.2, lineHeight: 20 },
-                  ]}
-                >
-                  The First Semester CA is a comprehensive test covering all
-                  course material taught in the first half of the academic year.
-                  It assesses foundational knowledge and prepares students for
-                  future topics
-                </Text>
-              </View>
-              <View
-                style={[
-                  utilityStyles.flexRow,
-                  utilityStyles.justifyBetween,
-                  utilityStyles.w100,
-                  utilityStyles.alignCenter,
-                ]}
-              >
-                <View style={[utilityStyles.flexCol, { gap: 4 }]}>
-                  <View
-                    style={[
-                      utilityStyles.flexRow,
-                      utilityStyles.alignCenter,
-                      utilityStyles.gXs,
-                    ]}
-                  >
-                    <CalendarLine
-                      width={18}
-                      height={18}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                    <View
-                      style={[
-                        utilityStyles.flexRow,
-                        utilityStyles.alignCenter,
-                        utilityStyles.g2Xs,
-                      ]}
-                    >
-                      <Text
-                        style={[
-                          utilityStyles.fontMedium,
-                          utilityStyles.textSm,
-                          lightModeStyles.textLight,
-                        ]}
-                      >
-                        03 Nov 2026
-                      </Text>
-                      <Dash
-                        width={18}
-                        height={18}
-                        color={colorPrimitives.light.colorTextPrimary}
-                      />
-                      <Text
-                        style={[
-                          utilityStyles.fontMedium,
-                          utilityStyles.textSm,
-                          lightModeStyles.textLight,
-                        ]}
-                      >
-                        15 Nov 2026
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={[
-                      utilityStyles.flexRow,
-                      utilityStyles.alignCenter,
-                      utilityStyles.gXs,
-                    ]}
-                  >
-                    <ClockLine
-                      width={18}
-                      height={18}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                    <Text
-                      style={[
-                        utilityStyles.fontMedium,
-                        utilityStyles.textSm,
-                        lightModeStyles.textLight,
-                      ]}
-                    >
-                      14 Days Left
-                    </Text>
-                  </View>
-                </View>
-                <TouchableOpacity
-                  style={[
-                    utilityStyles.flexCol,
-                    utilityStyles.alignCenter,
-                    utilityStyles.justifyCenter,
-                    lightModeStyles.bgPrimary,
-                    utilityStyles.roundedCircle,
-                    { width: 40, height: 40, transform: [{ rotate: "45deg" }] },
-                  ]}
-                >
-                  <Arrow
-                    height={18}
-                    width={18}
-                    color={colorPrimitives.light.colorOnPrimary}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View
-              style={[
-                utilityStyles.flexCol,
-                utilityStyles.pSm,
-                utilityStyles.roundedXl,
-                lightModeStyles.borderColor,
-                utilityStyles.gSm,
-                { borderWidth: 0.5 },
-              ]}
-            >
-              <View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.w100,
-                    utilityStyles.justifyBetween,
-                  ]}
-                >
-                  <View>
-                    <Text
-                      style={[
-                        utilityStyles.textMd,
-                        utilityStyles.fontSemiBold,
-                        lightModeStyles.textLight,
-                      ]}
-                    >
-                      First Semester Exam
-                    </Text>
-                  </View>
-                  <View>
-                    <Option
-                      width={24}
-                      height={24}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                </View>
-                <View
-                  style={[
-                    utilityStyles.flexRow,
-                    utilityStyles.alignCenter,
-                    utilityStyles.g2Xs,
-                  ]}
-                >
-                  <View>
-                    <Level
-                      height={18}
-                      width={18}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                  </View>
-                  <View>
-                    <Text
-                      style={[
-                        utilityStyles.textSm,
-                        utilityStyles.fontMedium,
-                        lightModeStyles.textLight,
-                      ]}
-                    >
-                      Software Engineering, Level 100
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View>
-                <Text
-                  style={[
-                    utilityStyles.textSm,
-                    utilityStyles.fontMedium,
-                    lightModeStyles.textLight,
-                    { letterSpacing: 0.2, lineHeight: 20 },
-                  ]}
-                >
-                  The First Semester CA is a comprehensive test covering all
-                  course material taught in the first half of the academic year.
-                  It assesses foundational knowledge and prepares students for
-                  future topics
-                </Text>
-              </View>
-              <View
-                style={[
-                  utilityStyles.flexRow,
-                  utilityStyles.justifyBetween,
-                  utilityStyles.w100,
-                  utilityStyles.alignCenter,
-                ]}
-              >
-                <View style={[utilityStyles.flexCol, { gap: 4 }]}>
-                  <View
-                    style={[
-                      utilityStyles.flexRow,
-                      utilityStyles.alignCenter,
-                      utilityStyles.gXs,
-                    ]}
-                  >
-                    <CalendarLine
-                      width={18}
-                      height={18}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                    <View
-                      style={[
-                        utilityStyles.flexRow,
-                        utilityStyles.alignCenter,
-                        utilityStyles.g2Xs,
-                      ]}
-                    >
-                      <Text
-                        style={[
-                          utilityStyles.fontMedium,
-                          utilityStyles.textSm,
-                          lightModeStyles.textLight,
-                        ]}
-                      >
-                        03 Nov 2026
-                      </Text>
-                      <Dash
-                        width={18}
-                        height={18}
-                        color={colorPrimitives.light.colorTextPrimary}
-                      />
-                      <Text
-                        style={[
-                          utilityStyles.fontMedium,
-                          utilityStyles.textSm,
-                          lightModeStyles.textLight,
-                        ]}
-                      >
-                        15 Nov 2026
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={[
-                      utilityStyles.flexRow,
-                      utilityStyles.alignCenter,
-                      utilityStyles.gXs,
-                    ]}
-                  >
-                    <ClockLine
-                      width={18}
-                      height={18}
-                      color={colorPrimitives.light.colorTextPrimary}
-                    />
-                    <Text
-                      style={[
-                        utilityStyles.fontMedium,
-                        utilityStyles.textSm,
-                        lightModeStyles.textLight,
-                      ]}
-                    >
-                      14 Days Left
-                    </Text>
-                  </View>
-                </View>
-                <TouchableOpacity
-                  style={[
-                    utilityStyles.flexCol,
-                    utilityStyles.alignCenter,
-                    utilityStyles.justifyCenter,
-                    lightModeStyles.bgPrimary,
-                    utilityStyles.roundedCircle,
-                    { width: 40, height: 40, transform: [{ rotate: "45deg" }] },
-                  ]}
-                >
-                  <Arrow
-                    height={18}
-                    width={18}
-                    color={colorPrimitives.light.colorOnPrimary}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View
-              style={[
-                utilityStyles.flexCol,
-                utilityStyles.pSm,
-                utilityStyles.roundedXl,
-                lightModeStyles.borderColor,
-                utilityStyles.gSm,
-                { borderWidth: 0.5 },
-              ]}
-            >
-              <View
-                style={[
-                  utilityStyles.flexRow,
-                  utilityStyles.alignCenter,
-                  utilityStyles.gSm,
-                ]}
-              >
-                <View>
-                  <Announcement
-                    color={colorPrimitives.light.colorTextPrimary}
-                    width={24}
-                    height={24}
-                  />
-                </View>
-                <Text
-                  style={[
-                    utilityStyles.textSm,
-                    utilityStyles.fontSemiBold,
-                    lightModeStyles.textLight,
-                  ]}
-                >
-                  First Semester CA Results Are Out!
-                </Text>
-              </View>
-              <View>
-                <Text
-                  style={[
-                    utilityStyles.textSm,
-                    utilityStyles.fontMedium,
-                    lightModeStyles.textLight,
-                    {
-                      letterSpacing: 0.2,
-                      lineHeight: 20,
-                    },
-                  ]}
-                >
-                  Your results are now available. check your performance today!
-                </Text>
-              </View>
-              <TouchableOpacity
-                style={[
-                  lightModeStyles.bgPrimary,
-                  utilityStyles.w100,
-                  utilityStyles.roundedCircle,
-                  utilityStyles.flexCol,
-                  utilityStyles.alignCenter,
-                  utilityStyles.justifyCenter,
-                  {
-                    height: 50,
-                    padding: 12,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    utilityStyles.textSm,
-                    utilityStyles.fontMedium,
-                    lightModeStyles.colorOnPrimary,
-                  ]}
-                >
-                  View Results
-                </Text>
-              </TouchableOpacity>
-            </View>
+            {tab.id == "all" ? (
+              <AllExams studentId={authUser.id} />
+            ) : (
+              <DynamicExams semesterId={tab.id} studentId={authUser.id} />
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -664,3 +139,154 @@ function ExamScreen() {
   );
 }
 export default ExamScreen;
+
+function AllExams({ studentId }) {
+  const { data: allExams, isLoading: isAllExamLoading } =
+    useGetAllExams(studentId);
+  return (
+    <>
+      {isAllExamLoading ? (
+        <ExamListSkeleton />
+      ) : (
+        <>
+          {allExams.data.map((semester) => {
+            return (
+              <View
+                style={[utilityStyles.flexCol, utilityStyles.gSm]}
+                key={semester.semesterId}
+              >
+                <Text
+                  style={[
+                    utilityStyles.textLg,
+                    utilityStyles.fontSemiBold,
+                    lightModeStyles.textLight,
+                    utilityStyles.textCapitalize,
+                  ]}
+                >
+                  {semester.semester}
+                </Text>
+                {semester.exams.map((exam) => (
+                  <React.Fragment key={exam.exam_id}>
+                    {exam.result_released && (
+                  <ExamResultCard
+                    result_title={exam?.result_message?.title}
+                    result_message={exam?.result_message?.body}
+                    exam_id={exam.exam_id}
+                  />
+                )}
+                    <ExamCard
+                      exam_name={exam.exam_name}
+                      specialty_name={exam.specialty_name}
+                      level_name={exam.level_name}
+                      description={exam.description}
+                      start_date={exam.start_date}
+                      end_date={exam.end_date}
+                      exam_id={exam.exam_id}
+                    />
+                  </React.Fragment>
+                ))}
+              </View>
+            );
+          })}
+        </>
+      )}
+    </>
+  );
+}
+
+function DynamicExams({ studentId, semesterId }) {
+  const { data: examData, isLoading: isExamDataLoading } = useGetExamBySemester(
+    studentId,
+    semesterId
+  );
+  const notFoundImage = require("../../assets/images/maskot/404.png");
+  return (
+    <>
+      {isExamDataLoading ? (
+        <ExamListSkeleton />
+      ) : examData?.data?.exams.length > 0 ? (
+        <>
+          <View style={[utilityStyles.flexCol, utilityStyles.gSm]}>
+            <Text
+              style={[
+                utilityStyles.textLg,
+                utilityStyles.fontSemiBold,
+                lightModeStyles.textLight,
+                utilityStyles.textCapitalize,
+              ]}
+            >
+              {examData.data.semester}
+            </Text>
+            {examData?.data?.exams?.map((exam) => (
+              <React.Fragment key={exam.exam_id}>
+                {exam.result_released && (
+                  <ExamResultCard
+                    result_title={exam.result_message.title}
+                    result_message={exam.result_message.body}
+                    key={exam.result_message.id}
+                    exam_id={exam.exam_id}
+                  />
+                )}
+                 <ExamCard
+                  exam_name={exam.exam_name}
+                  specialty_name={exam.specialty_name}
+                  level_name={exam.level_name}
+                  description={exam.description}
+                  start_date={exam.start_date}
+                  end_date={exam.end_date}
+                  exam_id={exam.exam_id}
+                />
+              </React.Fragment>
+            ))}
+          </View>
+        </>
+      ) : (
+        <>
+          <View
+            style={[
+              utilityStyles.flexCol,
+              utilityStyles.justifyCenter,
+              utilityStyles.alignCenter,
+              { height: 500 },
+            ]}
+          >
+            <Image
+              source={notFoundImage}
+              style={{ width: 250, height: 250, resizeMode: "cover" }}
+            />
+          </View>
+        </>
+      )}
+    </>
+  );
+}
+const styles = StyleSheet.create({
+  tabContainer: {
+    ...utilityStyles.roundedCircle,
+    ...utilityStyles.flexCol,
+    ...utilityStyles.alignCenter,
+    ...utilityStyles.justifyCenter,
+    paddingHorizontal: 16,
+    minWidth: 55,
+    width: "auto",
+    maxWidth: 200,
+    height: 48,
+  },
+  tabText: {
+    ...utilityStyles.textXs,
+    ...utilityStyles.textCenter,
+    ...utilityStyles.fontSemiBold,
+  },
+  tabContainerActive: {
+    ...lightModeStyles.bgPrimary,
+  },
+  tabContainerInActive: {
+    ...utilityStyles.bgPrimary100,
+  },
+  tabTextActive: {
+    ...lightModeStyles.colorOnPrimary,
+  },
+  tabTextInActive: {
+    ...lightModeStyles.colorPrimary,
+  },
+});

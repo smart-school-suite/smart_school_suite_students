@@ -2,8 +2,10 @@ import { Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CheckFilled } from "../../assets/icons/CheckFilled";
 import { Dot } from "../../assets/icons/Dot";
+import { ExamLine } from "../../assets/icons/ExamLine";
 import { Hash } from "../../assets/icons/Hash";
 import { Level } from "../../assets/icons/Level";
+import { Repeat } from "../../assets/icons/Repeat";
 import { Star } from "../../assets/icons/Star";
 import { colorPrimitives } from "../../constants/theme";
 import { lightModeStyles } from "../../styles/theme/light";
@@ -306,7 +308,27 @@ function ResitScreen() {
                     </View>
                   </View>
                 </View>
-                <View style={[utilityStyles.flexRow, utilityStyles.justifyEnd]}>
+                
+                <View style={[utilityStyles.flexRow, utilityStyles.justifyBetween, utilityStyles.alignEnd]}>
+                  <View style={[utilityStyles.flexCol, utilityStyles.gXs]}>
+                    <View style={[utilityStyles.flexRow, utilityStyles.alignCenter, utilityStyles.gXs]}>
+                       <Repeat width={20} height={20} color={colorPrimitives.light.colorTextPrimary}/>
+                       <Text style={[
+                          utilityStyles.textSm,
+                          utilityStyles.fontMedium,
+                          lightModeStyles.textLight,
+                        ]}>2 Attempts</Text>
+                      </View>
+                    <View style={[utilityStyles.flexRow, utilityStyles.alignCenter, utilityStyles.gXs]}>
+                       <ExamLine width={20} height={20} color={colorPrimitives.light.colorTextPrimary}/>
+                       <Text style={[
+                          utilityStyles.textSm,
+                          utilityStyles.fontMedium,
+                          lightModeStyles.textLight,
+                        ]}>First Semester Exam</Text>
+                      </View>
+                    </View>
+                    <View>
                    <Text 
                     style={[
                           utilityStyles.text2Xl,
@@ -314,6 +336,7 @@ function ResitScreen() {
                           lightModeStyles.textLight,
                         ]}>10,000 ₣</Text>
                 </View>
+                  </View>
               </View>
               ))}
             </View>

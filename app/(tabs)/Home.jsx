@@ -110,6 +110,7 @@ function HomeScreen() {
                     utilityStyles.alignCenter,
                     { width: 40, height: 40 },
                   ]}
+                  onPress={() => router.push("notification/Notification")}
                 >
                   <View
                     style={[
@@ -1064,7 +1065,7 @@ function HomeScreen() {
                   utilityStyles.pSm,
                   utilityStyles.roundedXl,
                   lightModeStyles.borderColor,
-                  utilityStyles.gMd,
+                  utilityStyles.gLg,
                   { borderWidth: 0.5 },
                 ]}
               >

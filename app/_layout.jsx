@@ -15,11 +15,13 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { SheetProvider } from 'react-native-actions-sheet';
 import "react-native-reanimated";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import AppContent from "../app/appContent";
 import { AuthProvider } from "../context/authContext";
+import '../sheets/sheets';
 import { persistor, store } from "../store/reduxStore";
 export const unstable_settings = {
   anchor: "(tabs)",
@@ -54,7 +56,8 @@ export default function RootLayout() {
     return null;
   }
   return (
-    <Provider store={store}>
+    <SheetProvider>
+      <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <AuthProvider>
           <QueryClientProvider client={queryClient}>
@@ -67,5 +70,6 @@ export default function RootLayout() {
         </AuthProvider>
       </PersistGate>
     </Provider>
+    </SheetProvider>
   );
 }

@@ -13,6 +13,7 @@ import { Dot } from "../../assets/icons/Dot";
 import { Hash } from "../../assets/icons/Hash";
 import { Option } from "../../assets/icons/Option";
 import { Star } from "../../assets/icons/Star";
+import { CourseListSkeleteon, CourseScreenTabsSkeleton } from "../../components/skeleton/CourseScreenSkeleton";
 import { colorPrimitives } from "../../constants/theme";
 import { useGetAllCourses } from "../../hooks/api/course/useGetAllCourses";
 import { useGetCoursesBySemester } from "../../hooks/api/course/useGetCoursesBySemester";
@@ -63,7 +64,7 @@ function CourseScreen() {
               }}
             >
               {isSemesterLoading ? (
-                <Text>loading.........</Text>
+                <CourseScreenTabsSkeleton />
               ) : (
                 <>
                   <Pressable
@@ -147,7 +148,7 @@ function AllCourses({ studentId, userImage }){
    return (
      <>
       {isAllCoursesLoading ? (
-              <Text>Course Loading........................</Text>
+              <CourseListSkeleteon />
             ) : (
               <>
                 {allCourses.data.map((items) => (
@@ -189,7 +190,7 @@ function DynamicCourses({ tab, studentId, userImage }) {
         style={[utilityStyles.flexCol, utilityStyles.gSm]}
       >
         {isCoursesLoading ? (
-          <Text>Course Loading........</Text>
+          <CourseListSkeleteon />
         ) : (
           <>
             {courses?.data.map((course) => (

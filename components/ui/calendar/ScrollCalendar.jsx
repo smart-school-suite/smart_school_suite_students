@@ -3,41 +3,68 @@ import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
 import { lightModeStyles } from "../../../styles/theme/light";
 import { utilityStyles } from "../../../styles/utility";
 
-function ScrollCalendar() {
-  const [date, setDate] = useState(null);
+const toLocalDateString = (date) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+};
+
+function ScrollCalendar({ startDate, endDate, onSelect }) {
+  const [selectedDate, setSelectedDate] = useState(null);
   const [days, setDays] = useState([]);
 
   useEffect(() => {
+    const toDateObj = (d) => (d ? new Date(d) : null);
+
+    const providedStart = toDateObj(startDate);
+    const providedEnd = toDateObj(endDate);
+
     const today = new Date();
-    const currentDay = today.getDate();
-    const year = today.getFullYear();
-    const month = today.getMonth();
+    today.setHours(0, 0, 0, 0);
 
-    const totalDays = new Date(year, month + 1, 0).getDate();
-    const monthDays = [];
+    let rangeStart, rangeEnd;
 
-    // Build normal list (1 → totalDays)
-    for (let day = 1; day <= totalDays; day++) {
-      const weekday = new Date(year, month, day)
-        .toLocaleDateString("en-US", { weekday: "short" });
-
-      monthDays.push({
-        label: weekday,
-        value: day.toString(),
-      });
+    if (providedStart && providedEnd) {
+      rangeStart = new Date(providedStart);
+      rangeEnd = new Date(providedEnd);
+    } else {
+      rangeStart = new Date(today);
+      rangeEnd = new Date(today);
+      rangeEnd.setDate(today.getDate() + 13);
     }
 
-    // Reorder so current day is first
-    const todayIndex = currentDay - 1;
+    rangeStart.setHours(0, 0, 0, 0);
+    rangeEnd.setHours(0, 0, 0, 0);
 
-    const reordered = [
-      ...monthDays.slice(todayIndex),  // today → end of month
-      ...monthDays.slice(0, todayIndex) // beginning → yesterday
-    ];
+    // Generate date list
+    const temp = [];
+    let current = new Date(rangeStart);
 
-    setDays(reordered);
-    setDate(currentDay.toString()); // highlight today
-  }, []);
+    while (current <= rangeEnd) {
+      const monthLabel = current.toLocaleDateString("en-US", { month: "short" });
+      const dayNumber = current.getDate();
+      const value = toLocalDateString(current);
+
+      temp.push({ monthLabel, dayNumber, value });
+      current.setDate(current.getDate() + 1);
+    }
+
+    setDays(temp);
+
+    // Initial selection
+    const initial = providedStart
+      ? toLocalDateString(providedStart)
+      : toLocalDateString(today);
+
+    setSelectedDate(initial);
+    onSelect?.(initial);
+  }, [startDate, endDate]);
+
+  const handleSelect = (value) => {
+    setSelectedDate(value);
+    onSelect?.(value);
+  };
 
   return (
     <ScrollView
@@ -46,35 +73,35 @@ function ScrollCalendar() {
       showsHorizontalScrollIndicator={false}
     >
       {days.map((item) => {
-        const isActive = date === item.value;
+        const isActive = selectedDate === item.value;
 
         return (
           <Pressable
             key={item.value}
             style={[
               styles.tabContainer,
-              isActive ? styles.tabContainerActive : styles.tabContainerInActive
+              isActive ? styles.tabContainerActive : styles.tabContainerInactive,
             ]}
-            onPress={() => setDate(item.value)}
+            onPress={() => handleSelect(item.value)}
           >
             <Text
               style={[
                 utilityStyles.fontMedium,
-                utilityStyles.text2Xs,
-                isActive ? styles.tabTextActive : styles.tabTextInActive
+                utilityStyles.textXs,
+                isActive ? styles.tabTextActive : styles.tabTextInactive,
               ]}
             >
-              {item.label}
+              {item.monthLabel}
             </Text>
 
             <Text
               style={[
                 utilityStyles.textXs,
                 utilityStyles.fontBold,
-                isActive ? styles.tabTextActive : styles.tabTextInActive
+                isActive ? styles.tabTextActive : styles.tabTextInactive,
               ]}
             >
-              {item.value}
+              {item.dayNumber}
             </Text>
           </Pressable>
         );
@@ -97,7 +124,7 @@ const styles = StyleSheet.create({
   tabContainerActive: {
     ...lightModeStyles.bgPrimary,
   },
-  tabContainerInActive: {
+  tabContainerInactive: {
     backgroundColor: "#fff",
     borderWidth: 0.5,
     borderColor: "#ccc",
@@ -105,7 +132,7 @@ const styles = StyleSheet.create({
   tabTextActive: {
     ...lightModeStyles.colorOnPrimary,
   },
-  tabTextInActive: {
+  tabTextInactive: {
     ...lightModeStyles.textLight,
   },
 });
